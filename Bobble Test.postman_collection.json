@@ -1,0 +1,92 @@
+{
+	"id": "f985be51-c04f-c04b-834d-b6652514a417",
+	"name": "Bobble Test",
+	"description": "",
+	"order": [
+		"0b1e78a8-2de2-f8ae-dde0-ff8b56a2f231",
+		"6fb6d1ab-ea7b-96d7-f964-49dd165a92f9"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1667006442356,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "0b1e78a8-2de2-f8ae-dde0-ff8b56a2f231",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8000/api/v1/submit_score/",
+			"queryParams": [
+				{
+					"key": "date",
+					"value": "2022-10-30",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1667014883420,
+			"name": "Submit User Score",
+			"description": "To save user score",
+			"collectionId": "f985be51-c04f-c04b-834d-b6652514a417",
+			"responses": [],
+			"rawModeData": "{\n\t\"score\": 30,\n\t\"username\": \"sparsh\",\n\t\"score_date\": \"2022-10-29\"\n}"
+		},
+		{
+			"id": "6fb6d1ab-ea7b-96d7-f964-49dd165a92f9",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8000/api/v1/get_leadership_board/",
+			"queryParams": [
+				{
+					"key": "date",
+					"value": "2022-10-30",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1667014872019,
+			"name": "Get Leadership Board",
+			"description": "To save user score",
+			"collectionId": "f985be51-c04f-c04b-834d-b6652514a417",
+			"responses": [],
+			"rawModeData": "{\n\t\"score\": 50,\n\t\"username\": \"sparsh\",\n\t\"score_date\": \"2022-10-29\"\n}"
+		}
+	]
+}
