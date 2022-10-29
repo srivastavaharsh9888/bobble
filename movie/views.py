@@ -32,7 +32,6 @@ class UserCentricDashboard(generics.ListAPIView):
         user_score = UserScore.objects.filter(score_date=date_to_consider, user__username=username).values('user__username').annotate(
             total_score=Sum('score')).order_by('-total_score')
         if user_score:
-            res = []
             mid_score = user_score[0]['total_score']
             upper_user_score = list(UserScore.objects.filter(score_date=date_to_consider).filter(~Q(user__username=username)).values('user__username').annotate(
             total_score=Sum('score')).filter(total_score__gte=mid_score).order_by('total_score')[:2])
