@@ -26,8 +26,16 @@ class UserCentricDashboard(generics.ListAPIView):
     def get_queryset(self):
         date_to_consider = self.request.query_params.get('date', datetime.today().strftime('%Y-%m-%d'))
         username = self.request.query_params.get('username')
-        return UserScore.objects.filter(score_date=date_to_consider, user__username=username).values('user__username').annotate(
+        user_score = UserScore.objects.filter(score_date=date_to_consider, user__username=username).values('user__username').annotate(
             total_score=Sum('score')).order_by('-total_score')
+        if user_score:
+            mid_score = user_score[0]['total_score']
+            upper_user_score = UserScore.objects.filter(score_date=date_to_consider, user__username=username).values('user__username').annotate(
+            total_score=Sum('score')).filter(total_score__gte=mid_score).order_by('-total_score')[:3]
+            lower_user_score = UserScore.objects.filter(score_date=date_to_consider, user__username=username).values('user__username').annotate(
+            total_score=Sum('score')).filter(total_score__lte=mid_score).order_by('-total_score')[:3]
+            return upper_user_score
+        return []
 
 
 class MovieDetail(generics.ListAPIView):
